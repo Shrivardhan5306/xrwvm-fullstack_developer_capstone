@@ -1,0 +1,68 @@
+﻿<html>
+<head>
+  <!-- Link the style sheet here -->
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="font-size: larger;" href="/contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
+    <h2 style="text-align:center; padding: 1em;">Contact Us</h2>
+    <div style="display: flex;flex-direction: row; margin:auto; width:100%;">
+
+      <div class="card" style="width: 50%; margin: 1em;">
+        <img class="card-img-top" src="/static/contactus.png" alt="Contact Us">
+        <div class="card-body">
+          <h4>Headquarters</h4>
+          <p><strong>Address:</strong> 3235 Baseline Road, El Paso, TX 79936, USA</p>
+          <p><strong>Phone:</strong> +1 (800) 555-2277</p>
+          <p><strong>Email:</strong> support@bestcars.com</p>
+          <p><strong>Hours:</strong> Mon-Fri 8AM-8PM, Sat 9AM-6PM</p>
+        </div>
+      </div>
+
+      <div class="card" style="width: 50%; margin: 1em;">
+        <div class="card-body">
+          <h4>Send Us a Message</h4>
+          <div class="mb-3">
+            <label>Full Name</label>
+            <input type="text" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="mb-3">
+            <label>Email Address</label>
+            <input type="email" class="form-control" placeholder="your@email.com">
+          </div>
+          <div class="mb-3">
+            <label>Message</label>
+            <textarea class="form-control" rows="4" placeholder="Write your message here..."></textarea>
+          </div>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</html>

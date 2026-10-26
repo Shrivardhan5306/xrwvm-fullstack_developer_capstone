@@ -1,96 +1,86 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from "react";
+import Header from "../Header/Header";
 import "./Dealers.css";
-import "../assets/style.css";
-import Header from '../Header/Header';
-import review_icon from "../assets/reviewicon.png"
+import { Link } from "react-router-dom";
 
 const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
-  // let [state, setState] = useState("")
-  let [states, setStates] = useState([])
+  const [states, setStates] = useState([]);
+  const [state, setState] = useState("All");
+  const [username] = useState(sessionStorage.getItem("username") || "");
 
-  // let root_url = window.location.origin
-  let dealer_url ="/djangoapp/get_dealers";
-  
-  let dealer_url_by_state = "/djangoapp/get_dealers/";
- 
+  const curr_url = window.location.href;
+  const root_url = curr_url.substring(0, curr_url.indexOf("dealers"));
+  const all_dealers_url = root_url + "djangoapp/get_dealers";
+  const dealers_by_state_url = root_url + "djangoapp/get_dealers/";
+
   const filterDealers = async (state) => {
-    dealer_url_by_state = dealer_url_by_state+state;
-    const res = await fetch(dealer_url_by_state, {
-      method: "GET"
-    });
+    setState(state);
+    let url = state === "All" ? all_dealers_url : dealers_by_state_url + state;
+    const res = await fetch(url);
     const retobj = await res.json();
-    if(retobj.status === 200) {
-      let state_dealers = Array.from(retobj.dealers)
-      setDealersList(state_dealers)
+    if (retobj.status === 200) {
+      let all_dealers = Array.from(retobj.dealers);
+      setDealersList(all_dealers);
     }
-  }
+  };
 
-  const get_dealers = async ()=>{
-    const res = await fetch(dealer_url, {
-      method: "GET"
-    });
-    const retobj = await res.json();
-    if(retobj.status === 200) {
-      let all_dealers = Array.from(retobj.dealers)
-      let states = [];
-      all_dealers.forEach((dealer)=>{
-        states.push(dealer.state)
-      });
-
-      setStates(Array.from(new Set(states)))
-      setDealersList(all_dealers)
-    }
-  }
   useEffect(() => {
-    get_dealers();
-  },[]);  
+    fetch(all_dealers_url)
+      .then((res) => res.json())
+      .then((retobj) => {
+        if (retobj.status === 200) {
+          let all_dealers = Array.from(retobj.dealers);
+          let unique_states = [...new Set(all_dealers.map((d) => d.state))];
+          setDealersList(all_dealers);
+          setStates(["All", ...unique_states]);
+        }
+      });
+  }, []);
 
+  return (
+    <div>
+      <Header />
+      <div>
+        <label htmlFor="state-filter">Filter by State: </label>
+        <select id="state-filter" onChange={(e) => filterDealers(e.target.value)}>
+          {states.map((s, i) => (
+            <option key={i} value={s}>{s}</option>
+          ))}
+        </select>
+      </div>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Dealer Name</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Zip</th>
+            <th>State</th>
+            <th>Review Dealer</th>
+            {username && <th>Post Review</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {dealersList.map((dealer) => (
+            <tr key={dealer.id}>
+              <td>{dealer.id}</td>
+              <td>{dealer.full_name}</td>
+              <td>{dealer.city}</td>
+              <td>{dealer.address}</td>
+              <td>{dealer.zip}</td>
+              <td>{dealer.state}</td>
+              <td><Link to={"/dealer/" + dealer.id}>Review Dealer</Link></td>
+              {username && (
+                <td><Link to={"/dealer/" + dealer.id + "/postreview"}>Post Review</Link></td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
-let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
-return(
-  <div>
-      <Header/>
-
-     <table className='table'>
-      <tr>
-      <th>ID</th>
-      <th>Dealer Name</th>
-      <th>City</th>
-      <th>Address</th>
-      <th>Zip</th>
-      <th>
-      <select name="state" id="state" onChange={(e) => filterDealers(e.target.value)}>
-      <option value="" selected disabled hidden>State</option>
-      <option value="All">All States</option>
-      {states.map(state => (
-          <option value={state}>{state}</option>
-      ))}
-      </select>        
-
-      </th>
-      {isLoggedIn ? (
-          <th>Review Dealer</th>
-         ):<></>
-      }
-      </tr>
-     {dealersList.map(dealer => (
-        <tr>
-          <td>{dealer['id']}</td>
-          <td><a href={'/dealer/'+dealer['id']}>{dealer['full_name']}</a></td>
-          <td>{dealer['city']}</td>
-          <td>{dealer['address']}</td>
-          <td>{dealer['zip']}</td>
-          <td>{dealer['state']}</td>
-          {isLoggedIn ? (
-            <td><a href={`/postreview/${dealer['id']}`}><img src={review_icon} className="review_icon" alt="Post Review"/></a></td>
-           ):<></>
-          }
-        </tr>
-      ))}
-     </table>;
-  </div>
-)
-}
-
-export default Dealers
+export default Dealers;
