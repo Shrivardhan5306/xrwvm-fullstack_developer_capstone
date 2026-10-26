@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Best Cars Dealership</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .contact-icon { font-size: 2rem; color: #0f3460; }
+        .hero-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 60px 0; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/djangoapp/">Best Cars</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/djangoapp/">Dealers</a></li>
+            <li class="nav-item"><a class="nav-link" href="/djangoapp/about/">About Us</a></li>
+            <li class="nav-item active"><a class="nav-link" href="/djangoapp/contact/">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4">Contact Us</h1>
+        <p class="lead">We are here to help. Reach out to us anytime.</p>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="contact-icon mb-3">&#128205;</div>
+                    <h5>Headquarters</h5>
+                    <p>1234 Auto Drive<br>Chicago, IL 60601<br>United States</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="contact-icon mb-3">&#128222;</div>
+                    <h5>Phone &amp; Email</h5>
+                    <p>1-800-BESTCARS<br>(1-800-237-8227)</p>
+                    <p><a href="mailto:support@bestcars.com">support@bestcars.com</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="contact-icon mb-3">&#128337;</div>
+                    <h5>Business Hours</h5>
+                    <p>Monday - Friday: 8am - 8pm CST<br>Saturday: 9am - 6pm CST<br>Sunday: 10am - 4pm CST</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Send Us a Message</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" class="form-control" placeholder="Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" class="form-control" placeholder="How can we help?">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-control" rows="4" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2025 Best Cars Dealership. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

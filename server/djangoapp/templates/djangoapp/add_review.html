@@ -1,16 +1,79 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Review - Best Cars</title>
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-
 </head>
-    <body>
-    <!--Add review form here -->
-    </body>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Best Cars</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="{% url 'djangoapp:index' %}">Dealers</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <span class="navbar-text mr-3" style="color:white">{{ user.username }}</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-light btn-sm" href="{% url 'djangoapp:logout' %}">Logout</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1>Post a Review for Dealer {{ dealer_id }}</h1>
+
+    <form action="{% url 'djangoapp:add_review' dealer_id %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="content">Your Review</label>
+            <textarea class="form-control" id="content" name="content" rows="4" required placeholder="Share your experience..."></textarea>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="purchasecheck" name="purchasecheck">
+            <label class="form-check-label" for="purchasecheck">Did you purchase a car?</label>
+        </div>
+        <div id="purchaseDetails" style="display:none;">
+            <div class="form-group">
+                <label for="purchasedate">Purchase Date</label>
+                <input type="text" class="form-control datepicker" id="purchasedate" name="purchasedate" placeholder="MM/DD/YYYY">
+            </div>
+            <div class="form-group">
+                <label for="car">Car Purchased</label>
+                <select class="form-control" id="car" name="car">
+                    <option value="">-- Select a Car --</option>
+                    {% for car in car_models %}
+                    <option value="{{ car.id }}">{{ car.car_make.name }} {{ car.name }} ({{ car.year|date:"Y" }})</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+        <a href="{% url 'djangoapp:dealer_details' dealer_id %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script>
+    document.getElementById('purchasecheck').addEventListener('change', function() {
+        var details = document.getElementById('purchaseDetails');
+        details.style.display = this.checked ? 'block' : 'none';
+    });
+    .ready(function(){
+        .datepicker.datepicker({format: 'mm/dd/yyyy'});
+    });
+</script>
+
+</body>
 </html>

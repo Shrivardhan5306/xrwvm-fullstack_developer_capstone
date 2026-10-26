@@ -140,3 +140,9 @@ server/djangoapp/migrations/
 *.pyc
 server/djangoapp/migrations/
 
+
+db.sqlite3
+*.pyc
+venv/
+capture_*.py
+seed_data.py
