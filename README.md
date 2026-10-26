@@ -1,41 +1,59 @@
-﻿# Best Cars Dealership - IBM Full-Stack Development Capstone
+﻿# Best Cars Dealership
+
+- **Repository Name**: `agfzb-CloudAppDevelopment_Capstone`
+- **Project Name**: `Best Cars Dealership`
+
+---
 
 ## Project Overview
 
-Best Cars Dealership is a full-stack web application built with Django and Python as part of the IBM Full-Stack Software Developer Professional Certificate capstone project.
+**Best Cars Dealership** is a comprehensive full-stack web application built with Django and Python as part of the **IBM Full-Stack Software Developer Professional Certificate Capstone Project**.
 
 This application allows users to:
-- Browse a list of car dealerships across the United States
-- Read reviews for individual dealerships
-- Submit reviews for dealerships (authenticated users only)
-- View car makes and models available at dealerships
+- Browse a verified nationwide directory of car dealerships across the United States.
+- Filter dealerships dynamically by state (e.g. Kansas, Texas, California).
+- View dealer details and customer reviews with IBM Watson NLU sentiment analysis badges.
+- Post authenticated reviews and vehicle purchase details for any dealership.
+- Explore available car makes and models through REST APIs and the Django admin interface.
+
+---
 
 ## Technology Stack
 
-- **Backend**: Django 3.1.3 (Python)
-- **Frontend**: Django Templates + Bootstrap 4
-- **Database**: SQLite (local), IBM Cloudant (dealer/review data)
-- **Sentiment Analysis**: IBM Watson Natural Language Understanding
-- **Deployment**: IBM Cloud Code Engine / Docker
-- **CI/CD**: GitHub Actions
+- **Backend**: Django 3.1.3 (Python 3.11)
+- **Frontend**: Django Templates, Bootstrap 4, React component integration
+- **Database**: SQLite (local development), IBM Cloudant (dealer and review documents)
+- **Sentiment Analysis**: IBM Watson Natural Language Understanding (NLU)
+- **Deployment**: IBM Cloud Code Engine
+- **CI/CD**: GitHub Actions workflows
 
-## Project Structure
+---
+
+## Repository Structure
 
 ```
-server/
-├── djangoapp/          # Main Django application
-│   ├── models.py       # CarMake, CarModel, CarDealer, DealerReview
-│   ├── views.py        # All view functions
-│   ├── urls.py         # URL routing
-│   ├── admin.py        # Admin configuration
-│   ├── restapis.py     # Cloud Function integration & Watson NLU
-│   └── templates/      # HTML templates
-├── djangobackend/      # Django project settings
-├── static/             # Static assets
-└── manage.py
+agfzb-CloudAppDevelopment_Capstone/
+├── .github/workflows/          # CI/CD workflows (linter & deployment)
+├── server/
+│   ├── djangoapp/              # Main Django application
+│   │   ├── models.py           # CarMake, CarModel, CarDealer, DealerReview
+│   │   ├── views.py            # Application views and REST endpoints
+│   │   ├── urls.py             # URL routing
+│   │   ├── admin.py            # Admin configuration with inlines
+│   │   ├── restapis.py         # Cloud Function and Watson NLU client
+│   │   └── templates/          # HTML templates
+│   ├── frontend/
+│   │   ├── src/components/     # React components (Register.jsx)
+│   │   └── static/             # Static pages (About.html, Contact.html)
+│   ├── djangobackend/          # Project settings
+│   ├── static/                 # Static media and assets
+│   └── manage.py
+└── README.md
 ```
 
-## Setup Instructions
+---
+
+## Quickstart Instructions
 
 ### 1. Clone the Repository
 ```bash
@@ -43,65 +61,25 @@ git clone https://github.com/Shrivardhan5306/agfzb-CloudAppDevelopment_Capstone.
 cd agfzb-CloudAppDevelopment_Capstone/server
 ```
 
-### 2. Create Virtual Environment
+### 2. Set Up Virtual Environment & Dependencies
 ```bash
 python -m venv venv
-venv\Scripts\activate   # Windows
-source venv/bin/activate # Linux/Mac
-```
-
-### 3. Install Dependencies
-```bash
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 4. Run Migrations
+### 3. Run Migrations & Start Server
 ```bash
 python manage.py makemigrations
 python manage.py migrate
-```
-
-### 5. Create Superuser
-```bash
-python manage.py createsuperuser
-```
-
-### 6. Start Development Server
-```bash
 python manage.py runserver
 ```
 
-Visit http://localhost:8000/djangoapp/ to see the application.
+Visit `http://localhost:8000/djangoapp/` in your browser.
 
-## API Endpoints
+---
 
-| Endpoint | Description |
-|---|---|
-| `GET /djangoapp/` | List all dealerships |
-| `GET /djangoapp/dealer/<id>/` | Dealer reviews |
-| `GET /djangoapp/dealer/<id>/review/` | Add review form |
-| `POST /djangoapp/dealer/<id>/review/` | Submit a review |
-| `GET /djangoapp/get_cars/` | All car makes and models |
-| `GET /djangoapp/about/` | About Us page |
-| `GET /djangoapp/contact/` | Contact Us page |
-| `GET /djangoapp/registration/` | Registration page |
-| `POST /djangoapp/login/` | Login |
-| `GET /djangoapp/logout/` | Logout |
+## Author & License
 
-## Environment Variables
-
-Set the following environment variables for production:
-
-- `NLU_URL` - IBM Watson NLU API URL
-- `NLU_API_KEY` - IBM Watson NLU API Key
-- `DEALER_CF_URL` - IBM Cloud Function URL for dealers
-- `REVIEW_CF_URL` - IBM Cloud Function URL for reviews
-- `POST_REVIEW_CF_URL` - IBM Cloud Function URL for posting reviews
-
-## License
-
-Apache License 2.0 - see LICENSE file for details.
-
-## Author
-
-Shrivardhan Patil (Shrivardhan5306)
+- **Author**: Shrivardhan Patil ([@Shrivardhan5306](https://github.com/Shrivardhan5306))
+- **License**: Apache License 2.0

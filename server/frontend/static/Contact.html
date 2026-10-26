@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Best Cars Dealership</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/djangoapp/">Best Cars</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/djangoapp/">Home / Dealers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/static/About.html">About Us</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/static/Contact.html">Contact Us <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Container -->
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 font-weight-bold">Get In Touch With Us</h1>
+        <p class="lead text-muted">We are here to assist you with vehicle purchases, dealership partnerships, and support.</p>
+    </div>
+
+    <div class="row">
+        <!-- Contact Details & Map Card -->
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Dealership Showroom" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h4 class="card-title font-weight-bold mb-3">Headquarters</h4>
+                    <p><strong>Address:</strong><br>3235 Baseline Road, Suite 400<br>El Paso, TX 79936, USA</p>
+                    <p><strong>Phone:</strong><br><a href="tel:+18005552277">+1 (800) 555-CARS (2277)</a></p>
+                    <p><strong>Email:</strong><br><a href="mailto:support@bestcars.com">support@bestcars.com</a></p>
+                    <p><strong>Operating Hours:</strong><br>Mon - Fri: 8:00 AM - 8:00 PM CST<br>Saturday: 9:00 AM - 6:00 PM CST<br>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col-md-7 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-body p-4">
+                    <h4 class="card-title font-weight-bold mb-3">Send Us a Message</h4>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Full Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Inquiry about Dealership #1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="button" class="btn btn-primary btn-block py-2">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p class="mb-0">&copy; 2026 Best Cars Dealership. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
